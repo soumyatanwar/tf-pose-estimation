@@ -308,8 +308,8 @@ class TfPoseEstimator:
 
         # load graph
         logger.info('loading graph from %s(default size=%dx%d)' % (graph_path, target_size[0], target_size[1]))
-        with tf.gfile.GFile(graph_path, 'rb') as f:
-            graph_def = tf.GraphDef()
+        with tf.io.gfile.GFile(graph_path, 'rb') as f:
+            graph_def = tf.compat.v1.GraphDef()
             graph_def.ParseFromString(f.read())
 
         if trt_bool is True:
@@ -327,9 +327,9 @@ class TfPoseEstimator:
                 use_calibration=True,
             )
 
-        self.graph = tf.get_default_graph()
+        self.graph = tf.compat.v1.get_default_graph()
         tf.import_graph_def(graph_def, name='TfPoseEstimator')
-        self.persistent_sess = tf.Session(graph=self.graph, config=tf_config)
+        self.persistent_sess = tf.compat.v1.Session(graph=self.graph, config=tf_config)
 
         for ts in [n.name for n in tf.get_default_graph().as_graph_def().node]:
             print(ts)
