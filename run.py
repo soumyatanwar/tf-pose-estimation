@@ -53,14 +53,6 @@ if __name__ == '__main__':
     image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 
     try:
-        """
-        %matplotlib inline sets the backend of matplotlib to the 'inline' backend:
-        With this backend, the output of plotting commands is displayed inline within 
-        frontends like the Jupyter notebook, directly below the code cell that produced it. 
-        The resulting plots will then also be stored in the notebook document
-        """
-        #added to ensure that the plots (image results) are actually shown in the Jupyter Notebook cells (frontend)
-        %matplotlib inline
         import matplotlib.pyplot as plt
 
         fig = plt.figure()
