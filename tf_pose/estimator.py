@@ -356,10 +356,10 @@ class TfPoseEstimator:
         self.heatMat = self.pafMat = None
 
         # warm-up
-        self.persistent_sess.run(tf.variables_initializer(
-            [v for v in tf.global_variables() if
+        self.persistent_sess.run(tf.compat.v1.variables_initializer(
+            [v for v in tf.compat.v1.global_variables() if
              v.name.split(':')[0] in [x.decode('utf-8') for x in
-                                      self.persistent_sess.run(tf.report_uninitialized_variables())]
+                                      self.persistent_sess.run(tf.compat.v1.report_uninitialized_variables())]
              ])
         )
         self.persistent_sess.run(
