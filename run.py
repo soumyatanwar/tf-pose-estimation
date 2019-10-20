@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 from tf_pose.estimator import TfPoseEstimator
 from tf_pose.networks import get_graph_path, model_wh
+from IPython import get_ipython
 
 logger = logging.getLogger('TfPoseEstimatorRun')
 logger.handlers.clear()
@@ -53,6 +54,7 @@ if __name__ == '__main__':
     image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 
     try:
+        get_ipython().run_line_magic('matplotlib', 'inline')
         import matplotlib.pyplot as plt
 
         fig = plt.figure()
@@ -90,4 +92,4 @@ if __name__ == '__main__':
         logger.warning('matplitlib error, %s' % e)
         # cv2.imshow('result', image) - makes Colab crash, so we use matplotlib version of imshow
         plt.imshow('result', image)
-        cv2.waitKey()
+#         cv2.waitKey()
