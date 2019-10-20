@@ -338,8 +338,8 @@ class TfPoseEstimator:
         self.tensor_output = self.graph.get_tensor_by_name('TfPoseEstimator/Openpose/concat_stage7:0')
         self.tensor_heatMat = self.tensor_output[:, :, :, :19]
         self.tensor_pafMat = self.tensor_output[:, :, :, 19:]
-        self.upsample_size = tf.placeholder(dtype=tf.int32, shape=(2,), name='upsample_size')
-        self.tensor_heatMat_up = tf.image.resize_area(self.tensor_output[:, :, :, :19], self.upsample_size,
+        self.upsample_size = tf.compat.v1.placeholder(dtype=tf.int32, shape=(2,), name='upsample_size')
+        self.tensor_heatMat_up = tf.compat.v1.image.resize_area(self.tensor_output[:, :, :, :19], self.upsample_size,
                                                       align_corners=False, name='upsample_heatmat')
         self.tensor_pafMat_up = tf.image.resize_area(self.tensor_output[:, :, :, 19:], self.upsample_size,
                                                      align_corners=False, name='upsample_pafmat')
