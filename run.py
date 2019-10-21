@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 from tf_pose.estimator import TfPoseEstimator
 from tf_pose.networks import get_graph_path, model_wh
-from IPython import get_ipython
+# from IPython import get_ipython
 
 logger = logging.getLogger('TfPoseEstimatorRun')
 logger.handlers.clear()
@@ -25,7 +25,7 @@ if __name__ == '__main__':
     parser.add_argument('--image', type=str, default='./images/p1.jpg')
     parser.add_argument('--model', type=str, default='mobilenet_thin',
                         help='cmu / mobilenet_thin / mobilenet_v2_large / mobilenet_v2_small')
-    parser.add_argument('--resize', type=str, default='432x368',
+    parser.add_argument('--resize', type=str, default='0x0',
                         help='if provided, resize images before they are processed. '
                              'default=0x0, Recommends : 432x368 or 656x368 or 1312x736 ')
     parser.add_argument('--resize-out-ratio', type=float, default=4.0,
@@ -55,8 +55,8 @@ if __name__ == '__main__':
 
     try:
         # added because run
-        exec(%matplotlib inline)
-        import matplotlib.pyplot as plt
+#         exec(%matplotlib inline)
+#         import matplotlib.pyplot as plt
 
         fig = plt.figure()
         a = fig.add_subplot(2, 2, 1)
@@ -93,4 +93,4 @@ if __name__ == '__main__':
         logger.warning('matplitlib error, %s' % e)
         # cv2.imshow('result', image) - makes Colab crash, so we use matplotlib version of imshow
         plt.imshow('result', image)
-#         cv2.waitKey()
+        cv2.waitKey()
