@@ -54,7 +54,8 @@ if __name__ == '__main__':
     image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 
     try:
-        get_ipython().run_line_magic('matplotlib', 'inline')
+        # added because run
+        exec(%matplotlib inline)
         import matplotlib.pyplot as plt
 
         fig = plt.figure()
