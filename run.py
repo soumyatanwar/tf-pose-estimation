@@ -91,4 +91,9 @@ if __name__ == '__main__':
         logger.warning('matplitlib error, %s' % e)
         # cv2.imshow('result', image) - makes Colab crash, so we use matplotlib version of imshow
         plt.imshow('result', image)
+       #1 to print the image
+        print(image)
+       #2 to print the image
+        from IPython.display import Image
+        Image(image)
         cv2.waitKey()
