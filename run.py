@@ -23,7 +23,7 @@ logger.addHandler(ch)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='tf-pose-estimation run')
     parser.add_argument('--image', type=str, default='./images/p1.jpg')
-    parser.add_argument('--model', type=str, default='mobilenet_thin',
+    parser.add_argument('--model', type=str, default='cmu',
                         help='cmu / mobilenet_thin / mobilenet_v2_large / mobilenet_v2_small')
     parser.add_argument('--resize', type=str, default='0x0',
                         help='if provided, resize images before they are processed. '
@@ -54,9 +54,7 @@ if __name__ == '__main__':
     image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 
     try:
-        # added because run
-#         exec(%matplotlib inline)
-#         import matplotlib.pyplot as plt
+        import matplotlib.pyplot as plt
 
         fig = plt.figure()
         a = fig.add_subplot(2, 2, 1)
